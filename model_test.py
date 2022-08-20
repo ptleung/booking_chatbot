@@ -2,7 +2,7 @@ from transformers import AutoModelForQuestionAnswering, AutoTokenizer, pipeline
 
 model_name = "deepset/roberta-large-squad2"
 
-nlp = pipeline("question-answering", model=model_name, tokenizer=model_name)
+nlp = pipeline("question-answering", model=model_name, tokenizer=model_name, frompt=True)
 
 context1 = "Hello, I would like to book studio95+65 on 19/8 from 9 to 11 am."
 context2 = "Hello, I would like to book studio35 next thursday 10pm for 2 hours."
@@ -23,7 +23,7 @@ def generate_question_set(question, context):
 
 def generate_log_statement(output_json, question_type):
     print(f"{question_type}: {output_json['answer']}, "
-          f"with {round(output_json['score'], 3)*100} confidence.")
+          f"with {int(output_json['score']*100)}% confidence.")
 
 
 def extract_booking_question(context):
@@ -39,8 +39,9 @@ def extract_booking_question(context):
 
 
 while True:
-    _context = input()
+    _context = input("Hello, how may I help you?")
     if _context == "quit":
         break
+    print("Extraction Results:")
     extract_booking_question(_context)
-    print("\n")
+    print("\n\n")

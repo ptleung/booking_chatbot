@@ -1,0 +1,17 @@
+Design flow:
+
+1. Get Phone Num
+2. Check if the ID (Phone Num) is in existing dict
+3. If not:
+    a. Say Hi, ask question
+    b. Save the extracted fields to dict
+    c. cache dict?
+4. If yes:
+    a. Say welcome back and ask if they wish to continue the booking
+    b. If yes, continue
+    c. If no, ask again
+5. If one field is missing, ask if they wanna provide all details or any is ok. E.g. if time is not specified, ask if
+any time is ok.
+6. Send API request to booking system.
+7. Reply customer and ask for confirmation and payment/membership info.
+8. Book and send email to confirm booking.
